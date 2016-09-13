@@ -381,8 +381,8 @@
 #define HEATER_BED_PIN     8    // BED
 
 #define HEATER_0_PIN       9
-#define HEATER_1_PIN       10
-#define HEATER_2_PIN       11
+// #define HEATER_1_PIN       10
+// #define HEATER_2_PIN       11
 
 #define TEMP_BED_PIN       0   // ANALOG NUMBERING
 
@@ -496,11 +496,26 @@
 #define Z_MIN_PIN          -1
 #endif
 
-#define SENSITIVE_PINS {0, 1, X_STEP_PIN, X_DIR_PIN, X_ENABLE_PIN, X_MIN_PIN, X_MAX_PIN, Y_STEP_PIN, Y_DIR_PIN, Y_ENABLE_PIN, Y_MIN_PIN, Y_MAX_PIN, Z_STEP_PIN, Z_DIR_PIN, Z_ENABLE_PIN, Z_MIN_PIN, Z_MAX_PIN, PS_ON_PIN, \
+
+#if MOTHERBOARD == 405
+
+#else
+  #define SENSITIVE_PINS {0, 1, X_STEP_PIN, X_DIR_PIN, X_ENABLE_PIN, X_MIN_PIN, X_MAX_PIN, Y_STEP_PIN, Y_DIR_PIN, Y_ENABLE_PIN, Y_MIN_PIN, Y_MAX_PIN, Z_STEP_PIN, Z_DIR_PIN, Z_ENABLE_PIN, Z_MIN_PIN, Z_MAX_PIN, PS_ON_PIN, \
                         HEATER_BED_PIN, FAN_PIN,                  \
                         _E0_PINS _E1_PINS _E2_PINS             \
                         analogInputToDigitalPin(TEMP_0_PIN), analogInputToDigitalPin(TEMP_1_PIN), analogInputToDigitalPin(TEMP_2_PIN), analogInputToDigitalPin(TEMP_BED_PIN) }
+#endif
 
+#define SENSITIVE_PINS {0, 1, \
+                        X_STEP_PIN, X_DIR_PIN, X_ENABLE_PIN, X_MIN_PIN, \
+                        XX_STEP_PIN, XX_DIR_PIN, XX_ENABLE_PIN, XX_MIN_PIN, \
+                        Y_STEP_PIN, Y_DIR_PIN, Y_ENABLE_PIN, Y_MIN_PIN, \
+                        YY_STEP_PIN, YY_DIR_PIN, YY_ENABLE_PIN, YY_MIN_PIN, \
+                        Z_STEP_PIN, Z_DIR_PIN, Z_ENABLE_PIN, Z_MIN_PIN, \
+                        ZZ_STEP_PIN, ZZ_DIR_PIN, ZZ_ENABLE_PIN, ZZ_MIN_PIN, \
+                        PS_ON_PIN, \
+                        HEATER_BED_PIN, FAN_PIN, \
+                        analogInputToDigitalPin(TEMP_0_PIN), analogInputToDigitalPin(TEMP_1_PIN), analogInputToDigitalPin(TEMP_2_PIN), analogInputToDigitalPin(TEMP_BED_PIN) }
 
 
 

@@ -550,16 +550,16 @@ HAL_STEP_TIMER_ISR
       }
     }
 
-    #ifndef ADVANCE
-      if ((out_bits & (1<<E_AXIS)) != 0) {  // -direction
-        REV_E_DIR();
-        count_direction[E_AXIS]=-1;
-      }
-      else { // +direction
-        NORM_E_DIR();
-        count_direction[E_AXIS]=1;
-      }
-    #endif //!ADVANCE
+    // #ifndef ADVANCE
+    //   if ((out_bits & (1<<E_AXIS)) != 0) {  // -direction
+    //     REV_E_DIR();
+    //     count_direction[E_AXIS]=-1;
+    //   }
+    //   else { // +direction
+    //     NORM_E_DIR();
+    //     count_direction[E_AXIS]=1;
+    //   }
+    // #endif //!ADVANCE
 
 
 
@@ -651,15 +651,15 @@ HAL_STEP_TIMER_ISR
         #endif
       }
 
-      #ifndef ADVANCE
-        counter_e += current_block->steps_e;
-        if (counter_e > 0) {
-          WRITE_E_STEP(!INVERT_E_STEP_PIN);
-          counter_e -= current_block->step_event_count;
-          count_position[E_AXIS]+=count_direction[E_AXIS];
-          WRITE_E_STEP(INVERT_E_STEP_PIN);
-        }
-      #endif //!ADVANCE
+      // #ifndef ADVANCE
+      //   counter_e += current_block->steps_e;
+      //   if (counter_e > 0) {
+      //     WRITE_E_STEP(!INVERT_E_STEP_PIN);
+      //     counter_e -= current_block->step_event_count;
+      //     count_position[E_AXIS]+=count_direction[E_AXIS];
+      //     WRITE_E_STEP(INVERT_E_STEP_PIN);
+      //   }
+      // #endif //!ADVANCE
       step_events_completed += 1;
       if(step_events_completed >= current_block->step_event_count) break;
     }
